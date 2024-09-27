@@ -1,0 +1,62 @@
+@media (max-width: 1439px) {
+    .login-wrapper {
+        padding: 20px;
+    }
+    .main-wrapper {
+        padding: 40px 60px;
+    }
+}
+@media (max-width: 740px) {
+    .modal-window {
+        width: 80vw;
+        height: 80vh;
+    }
+    .modal-window .card-image {
+        height: 60vh;
+    }
+    .modal-window.login-window {
+        width: 90%;
+        padding: 50px 25px;
+    }
+    .logo {
+        text-align: center;
+    }
+}
+@media (max-width: 640px) {
+    .modal-window.login-window form {
+        width: 100%;
+    }
+    .modal-window.login-window form .form-button {
+        right: 25px;
+        bottom: 50px;
+    }
+    .card {
+        flex-basis: 100%;
+    }
+}
+@media (max-width: 400px) {
+    .logo {
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .main-wrapper {
+        padding: 10px 5px;
+    }
+    .modal-window {
+        width: 95vw;
+        height: 95vh;
+    }
+    .modal-window .card-image {
+        height: 70vh;
+    }
+    .modal-window.login-window {
+        padding: 40px 20px;
+    }
+    .modal-window.login-window form .form-button {
+        right: 20px;
+        bottom: 40px;
+    }
+    .form-error-text span, .form-error-text-h span {
+        font-size: 14px
+    }
+}
