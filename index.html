@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="rstore">
+    <meta name="description" content="Тестовое задание FrontEnd lvl 2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <title>R-STORE - Главная</title>
+</head>
+<body>
+    <div class="main-wrapper">
+        <header>
+            <div class="logo">R-STORE</div>
+            <div class="link-to-login">
+                <a href="login.html" title="Войти в аккаунт">
+                    Войти
+                </a>
+            </div>
+        </header>
+        <main>
+        </main>
+    </div>
+    <div class="background-blur">
+        <div class="modal-window">
+            <div class="window-content"></div>
+            <div class="close-button">X</div>
+        </div>
+    </div>
+    <script>
+        const items = [
+            // Список категорий и карточек в них:
+            ["Чехлы", [ // Название категории
+                ["Прозрачные", "images/transparent_case.png", 0, false], // "Название", "Путь к картинке", "Цена", "Наличие возможности поставить лайк"
+                ["Силиконовые", "images/silicon_case.png", 0, false],
+                ["Кожаные", "images/leather_case.png", 0, false]
+            ]],
+            ["Наушники", [
+                ["Apple Earpods", "images/earpods_1.png", 1999, true],
+                ["Apple Earpods", "images/earpods_2.png", 1999, true],
+                ["Apple Earpods", "images/earpods_3.png", 2999, true]
+            ]],
+            ["Беспроводные наушники", [
+                ["Apple AirPods", "images/airpods.png", 12999, true],
+                ["Apple AirPods Pro", "images/airpods_pro.png", 22999, true],
+                ["Beats", "images/beats.png", 10000, true]
+            ]]
+        ];
+        $('main').html(function() {
+            categoryes = '';
+            for(let i = 0; i < items.length; i++) {
+                products = '';
+                for(let j = 0; j < items[i][1].length; j++) {
+                    products += '<div class="card"><div class="card-content"><div class="card-image"><img src="'+items[i][1][j][1]+'" alt="'+items[i][1][j][0]+'"></div><div class="card-info">';
+                    if (items[i][1][j][2] == 0) { // Если цена равна нулю, то она не отображается
+                        products += '<div class="center"><div>'+items[i][1][j][0]+'</div></div></div></div>';
+                    }
+                    else {
+                        products += '<div class="between"><div>'+items[i][1][j][0]+'</div><div>'+Math.floor(items[i][1][j][2] / 1000)+' '+(items[i][1][j][2]%1000).toString().padStart(3, '0')+'</div></div></div></div>';
+                    }
+                    if (items[i][1][j][3]) {
+                        products += '<div class="like-button"></div>';
+                    }
+                    products += '</div>';
+                }
+                categoryes += '<div class="category"><div class="category-header">'+items[i][0]+'</div><div class=category-content>'+products+'</div></div>';
+            }
+            return categoryes
+        })
+
+        // Открытие и закрытие модального окна
+
+        $('.card-content').on('click', function() {
+            $('.background-blur').addClass('visible');
+            $('.window-content').html($(this).html()); // Заменяем весь контент модального окна на контент карточки, на которую нажали
+        })
+        $('.close-button').on('click', function() {
+            $('.background-blur').removeClass('visible');
+        })
+
+        // Поставить или убрать лайк. Переключается класс liked, который имеет в псевдо-классе before закрашенное сердечко
+
+        $('.like-button').on('click', function() {
+            $(this).toggleClass('liked');
+        })
+    </script>
+</body>
+</html>

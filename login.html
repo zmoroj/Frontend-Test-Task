@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="rstore">
+    <meta name="description" content="Тестовое задание FrontEnd lvl 2">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.js" integrity="sha256-nQLuAZGRRcILA+6dMBOvcRh5Pe310sBpanc6+QBmyVM=" crossorigin="anonymous"></script>
+    <title>R-STORE - Вход</title>
+</head>
+<body>
+    <div class="login-wrapper">
+        <div class="logo">
+            <a href="index.html" title="На главную">R-Store</a>
+        </div>
+        <div class="modal-window login-window">
+            <div>
+                <img src="images/arrow_to_left.png" alt="Вход">
+                <div>ВХОД</div>
+            </div>
+            <form action="javascript:;" onsubmit="formaction( this )" method="post" id="login-form">
+                <div>
+                    <input type="text" placeholder="Логин" id="login-input">
+                    <div class="form-error-text">
+                        <span>Поле не может быть пустым</span>
+                    </div>
+                </div>
+                <div>
+                    <input type="password" placeholder="Пароль" id="password-input">
+                    <div class="form-error-text">
+                        <span>Поле не может быть пустым</span>
+                    </div>
+                </div>
+                <div class="form-button">
+                    <div class="form-error-text-h">
+                        <span>Неверный логин или пароль</span>
+                    </div>
+                    <button>Войти</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        const accounts = [ // Список аккаунтов
+            ['student', 'student'], // "Логин", "Пароль"
+            ['Login', 'Password']
+        ];
+        function formaction() {
+            let verify = false;
+            let login = $('#login-input').val();
+            let password = $('#password-input').val();
+            if (login == "" || password == "") { // Если одно из полей пустое, выдвигается текст, сообщающий об этом
+                if (login == "") {
+                    $('#login-input').siblings('.form-error-text').children('span').css('transform', 'translateY(0)');
+                }
+                if (password == "") {
+                    $('#password-input').siblings('.form-error-text').children('span').css('transform', 'translateY(0)');
+                }
+            } else {
+                for (let i = 0; i < accounts.length; i++) { 
+                    if (login == accounts[i][0]) { // Проверка по всему списку аккаунтов
+                        if (password == accounts[i][1]) {
+                            verify = true; // Если всё совпадает, то вход успешен
+                            break;
+                        }
+                    }
+                }
+                if (verify) {
+                    window.location.href = 'index.html'; // Успешный вход, переадресация на главную
+                }
+                else {
+                    $('.form-error-text-h').children('span').css('transform', 'translateX(0)'); // Если войти не удалось, выдвигается текст о неудачном входе
+                }
+            }
+        }
+    </script>
+</body>
+</html>
