@@ -1,0 +1,272 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Общие стили */
+
+body {
+    font-family: "Montserrat", Arial, Helvetica, sans-serif;
+    background: #ece9e9;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+.logo {
+    font-size: 40px;
+    font-weight: 600;
+    text-transform: uppercase;
+    user-select: none;
+}
+.modal-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 50px;
+    border-radius: 20px;
+    box-sizing: border-box;
+    width: 50vw;
+    height: 75vh;
+}
+
+/* Стили для страницы входа */
+
+.login-wrapper {
+    padding: 74px 92px;
+}
+.form-error-text, .form-error-text-h {
+    overflow: hidden;
+}
+.form-error-text span, .form-error-text-h span {
+    display: inline-block;
+    transition: 0.4s;
+    transform: translateY(-100%);
+    color: #FE0808;
+    font-weight: 600;
+    padding: 6px;
+    box-sizing: border-box;
+}
+.form-error-text-h span {
+    transform: translate(+100%, 0);
+    text-align: end;
+}
+.modal-window.login-window {
+    width: 675px;
+    height: 520px;
+    padding: 60px 50px;
+}
+.modal-window.login-window > div {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    user-select: none;
+}
+.modal-window.login-window > div div {
+    font-size: 36px;
+    font-weight: 600;
+    color: #241F5C;
+    margin: 0;
+    padding: 0;
+}
+.modal-window.login-window > div img {
+    width: 36px;
+    height: 36px;
+}
+.modal-window.login-window form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 30px;
+    align-items: center;
+    width: 467px;
+    margin: 85px auto 0 auto;
+}
+.modal-window.login-window form input {
+    width: 100%;
+    height: 73px;
+    background: #adacac;
+    color: #fff;
+    font-size: 35px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    border-radius: 20px;
+}
+.modal-window.login-window form .form-button {
+    position: absolute;
+    right: 48px;
+    bottom: 36px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.modal-window.login-window form button {
+    background: #241F5C;
+    width: 139px;
+    height: 45px;
+    border-radius: 20px;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* Стили для главной страницы */
+
+.main-wrapper {
+    padding: 40px 165px;
+}
+header {
+    height: 60px;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+header .link-to-login {
+    height: 100%;
+    width: 140px;
+    background: #3799c4;
+}
+header .link-to-login a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    user-select: none;
+}
+.category {
+    margin: 30px 0;
+    width: 100%;
+}
+.category-header {
+    color: #838383;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.category-content {
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    width: 100%;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+}
+.card {
+    flex-basis: 350px;
+    flex-shrink: 0;
+    height: 400px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: rgba(0,0,0,0.1) 0 0 12px;
+    cursor: pointer;
+    position: relative;
+    scroll-snap-align: start;
+}
+.card-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    padding: 25px 35px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+}
+.card-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+    height: 80%;
+    margin-bottom: 20px;
+}
+.card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    user-select: none;
+}
+.card-info {
+    width: 100%;
+    font-size: 17px;
+    font-weight: 600;
+    color: #1C1C27;
+}
+.card-info .center {
+    text-align: center;
+}
+.card-info .between {
+    display: flex;
+    justify-content: space-between;
+}
+.card-info .between div:last-child {
+    color: #FFA542;
+}
+.like-button {
+    width: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+.like-button::after {
+    content: url("../images/heart.png");
+}
+.liked::after {
+    content: url("../images/filled_heart.png");
+}
+.background-blur {
+    display: none;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.42);
+    transition: 0.4s;
+}
+.visible {
+    display: block;
+    opacity: 1;
+    @starting-style {
+        opacity: 0;
+    }
+}
+.modal-window .window-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+}
+.modal-window .card-image {
+    margin-bottom: 40px;
+    width: 90%;
+    height: 50vh;
+}
+.modal-window .card-image img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.modal-window .card-info {
+    font-size: 32px;
+}
+.modal-window .close-button {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    font-weight: 600;
+    font-size: 32px;
+    user-select: none;
+    cursor: pointer;
+}
